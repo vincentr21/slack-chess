@@ -1,0 +1,254 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<style>
+
+/*K king
+Q queen
+R rook
+B bishop
+N knight
+P pawn*/
+div#chess_board{
+    /*width: 55%;*/
+    float: left;
+}
+
+div#chess_sidebar{
+    /*width: 45%;*/
+    float: left;
+}
+div#sidebar_centre{
+    position:absolute;
+    top: 40%;
+    margin: 20px;
+}
+div#sidebar_centre *{
+    float: none;
+    /*display: table;*/
+}
+div.board_row {
+    display:flex;
+    flex-direction:row;
+}
+
+div.board_square {
+    display: flex;
+    flex-direction:column;
+    float: left;
+    min-width: 70px;
+    min-height: 70px;
+    /*padding: 5px;*/
+    border: 1px solid #aaaaaa;
+}
+div#board_overflow{
+    display:flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+    padding: 10px;
+    margin-top: 40px;
+    border: 1px solid #aaaaaa;
+    width: 560px;
+}
+img.chess_piece{
+    display: flex;
+    flex-direction:row;
+    float: left;
+    width: 70px;
+    height: 70px;
+}
+</style>
+
+
+</head>
+
+
+<body>
+
+<p>Slack Chess v1.0</p>
+
+<div id="chess_board">
+    <div class="board_row">
+        <div id="00" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <img id="bR0" class="chess_piece" src="brook.png" draggable="true" ondragstart="drag(event)">
+        </div>
+        <div id="01" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <img id="bN0" class="chess_piece" src="bknight.png" draggable="true" ondragstart="drag(event)">
+        </div>
+        <div id="02" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <img id="bB0" class="chess_piece" src="bbishop.png" draggable="true" ondragstart="drag(event)">
+        </div>
+        <div id="03" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <img id="bQ0" class="chess_piece" src="bqueen.png" draggable="true" ondragstart="drag(event)">
+        </div>
+        <div id="04" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <img id="bK0" class="chess_piece" src="bking.png" draggable="true" ondragstart="drag(event)">
+        </div>
+        <div id="05" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <img id="bB1" class="chess_piece" src="bbishop.png" draggable="true" ondragstart="drag(event)">
+        </div>
+        <div id="06" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <img id="bN1" class="chess_piece" src="bknight.png" draggable="true" ondragstart="drag(event)">
+        </div>
+        <div id="07" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <img id="bR1" class="chess_piece" src="brook.png" draggable="true" ondragstart="drag(event)">
+        </div>
+    </div>
+
+    <div class="board_row">
+        <div id="10" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <img id="bP0" class="chess_piece" src="bpawn.png" draggable="true" ondragstart="drag(event)">
+        </div>
+        <div id="11" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <img id="bP1" class="chess_piece" src="bpawn.png" draggable="true" ondragstart="drag(event)">
+        </div>
+        <div id="12" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <img id="bP2" class="chess_piece" src="bpawn.png" draggable="true" ondragstart="drag(event)">
+        </div>
+        <div id="13" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <img id="bP3" class="chess_piece" src="bpawn.png" draggable="true" ondragstart="drag(event)">
+        </div>
+        <div id="14" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <img id="bP4" class="chess_piece" src="bpawn.png" draggable="true" ondragstart="drag(event)">
+        </div>
+        <div id="15" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <img id="bP5" class="chess_piece" src="bpawn.png" draggable="true" ondragstart="drag(event)">
+        </div>
+        <div id="16" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <img id="bP6" class="chess_piece" src="bpawn.png" draggable="true" ondragstart="drag(event)">
+        </div>
+        <div id="17" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <img id="bP7" class="chess_piece" src="bpawn.png" draggable="true" ondragstart="drag(event)">
+        </div>
+    </div>
+
+
+    <div class="board_row">
+        <div id="20" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div id="21" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div id="22" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div id="23" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div id="24" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div id="25" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div id="26" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div id="27" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    </div>
+
+
+    <div class="board_row">
+        <div id="30" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div id="31" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div id="32" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div id="33" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div id="34" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div id="35" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div id="36" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div id="37" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    </div>
+
+    <div class="board_row">
+        <div id="40" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div id="41" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div id="42" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div id="43" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div id="44" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div id="45" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div id="46" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div id="47" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    </div>
+
+
+    <div class="board_row">
+        <div id="50" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div id="51" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div id="52" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div id="53" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div id="54" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div id="55" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div id="56" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div id="57" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    </div>
+
+    <div class="board_row">
+        <div id="60" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <img id="wP0" class="chess_piece" src="wpawn.png" draggable="true" ondragstart="drag(event)">
+        </div>
+        <div id="61" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <img id="wP1" class="chess_piece" src="wpawn.png" draggable="true" ondragstart="drag(event)">
+        </div>
+        <div id="62" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <img id="wP2" class="chess_piece" src="wpawn.png" draggable="true" ondragstart="drag(event)">
+        </div>
+        <div id="63" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <img id="wP3" class="chess_piece" src="wpawn.png" draggable="true" ondragstart="drag(event)">
+        </div>
+        <div id="64" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <img id="wP4" class="chess_piece" src="wpawn.png" draggable="true" ondragstart="drag(event)">
+        </div>
+        <div id="65" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <img id="wP5" class="chess_piece" src="wpawn.png" draggable="true" ondragstart="drag(event)">
+        </div>
+        <div id="66" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <img id="wP6" class="chess_piece" src="wpawn.png" draggable="true" ondragstart="drag(event)">
+        </div>
+        <div id="67" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <img id="wP7" class="chess_piece" src="wpawn.png" draggable="true" ondragstart="drag(event)">
+        </div>
+    </div>
+
+    <div class="board_row">
+        <div id="70" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <img id="wR0" class="chess_piece" src="wrook.png" draggable="true" ondragstart="drag(event)">
+        </div>
+        <div id="71" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <img id="wN0" class="chess_piece" src="wknight.png" draggable="true" ondragstart="drag(event)">
+        </div>
+        <div id="72" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <img id="wB0" class="chess_piece" src="wbishop.png" draggable="true" ondragstart="drag(event)">
+        </div>
+        <div id="73" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <img id="wQ0" class="chess_piece" src="wqueen.png" draggable="true" ondragstart="drag(event)">
+        </div>
+        <div id="74" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <img id="wK0" class="chess_piece" src="wking.png" draggable="true" ondragstart="drag(event)">
+        </div>
+        <div id="75" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <img id="wB1" class="chess_piece" src="wbishop.png" draggable="true" ondragstart="drag(event)">
+        </div>
+        <div id="76" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <img id="wN1" class="chess_piece" src="wknight.png" draggable="true" ondragstart="drag(event)">
+        </div>
+        <div id="77" class="board_square" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <img id="wR1" class="chess_piece" src="wrook.png" draggable="true" ondragstart="drag(event)">
+        </div>
+    </div>
+
+
+    <div id="board_overflow" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <!-- <img id="qwe" class="chess_piece" src=".png" draggable="true" ondragstart="drag(event)">
+        <img id="qwe" class="chess_piece" src=".png" draggable="true" ondragstart="drag(event)"> -->
+    </div>
+
+</div>
+
+
+<div id="chess_sidebar">
+    <div id="sidebar_centre">
+
+        <input id="autocopy" type="checkbox" value="some_value" checked>
+         auto-copy to clipboard after a move is made
+        </input>
+
+        <textarea id="slack_output" rows="8" cols="50">
+Slack Chess
+        </textarea>
+    </div>
+</div>
+
+
+
+
+<script type="text/javascript" src="slack_chess.js"></script>
+
+</body>
+</html>
